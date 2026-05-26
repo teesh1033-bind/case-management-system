@@ -430,7 +430,7 @@ $html = <<<'HTML'
                                 <h5 class="text-dark">Invoices</h5>
                                 <p class="text-sm text-muted mb-0">Issued for your matters, newest first.</p>
                             </div>
-                            <a href="client-cases.php" class="btn btn-sm btn-outline-primary mb-0">My cases</a>
+                            <a href="client-cases.php" class="btn btn-sm btn-primary mb-0">My cases</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-0">
                             <div class="table-responsive">
@@ -461,7 +461,7 @@ $html = <<<'HTML'
                                 <h5 class="text-dark">Payment history</h5>
                                 <p class="text-sm text-muted mb-0">Recorded receipts and transfers.</p>
                             </div>
-                            <a href="client-dashboard.php" class="btn btn-sm btn-outline-primary mb-0">Dashboard</a>
+                            <a href="client-dashboard.php" class="btn btn-sm btn-primary mb-0">Dashboard</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-0">
                             <div class="table-responsive">

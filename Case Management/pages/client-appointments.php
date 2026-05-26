@@ -311,13 +311,13 @@ if (empty($appointments)) {
             </td>
             <td class="align-middle text-end pe-4">
                 <div class="d-flex flex-wrap gap-2 justify-content-end">
-                    <button type="button" class="btn btn-sm btn-outline-primary mb-0" onclick="viewAppointmentDetails(' . $aid . ')">Details</button>';
+                    <button type="button" class="btn btn-sm btn-primary mb-0" onclick="viewAppointmentDetails(' . $aid . ')">View</button>';
         if ($apt['status'] === 'rejected') {
             $appointmentsRows .= '
                     <form method="POST" class="d-inline" onsubmit="return confirm(\'Delete this rejected appointment request permanently?\')">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="appointment_id" value="' . $aid . '">
-                        <button type="submit" class="btn btn-sm btn-outline-danger mb-0" title="Delete rejected appointment">
+                        <button type="submit" class="btn btn-sm btn-danger mb-0" title="Delete rejected appointment">
                             <i class="fas fa-trash" aria-hidden="true"></i>
                         </button>
                     </form>';
@@ -657,7 +657,7 @@ $html = <<<'HTML'
                                 <h5 class="text-dark">Your appointments</h5>
                                 <p class="text-sm text-muted mb-0">Newest activity first.</p>
                             </div>
-                            <a href="client-dashboard.php" class="btn btn-sm btn-outline-primary mb-0">Dashboard</a>
+                            <a href="client-dashboard.php" class="btn btn-sm btn-primary mb-0">Dashboard</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-0">
                             <div class="table-responsive">

@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['delete_client']) || 
                       '<br><br><strong>Force Delete:</strong> This will permanently delete all appointments and cases, but preserve payment/invoice records for financial tracking. ' .
                       '<form method="POST" style="display:inline;">' .
                       '<input type="hidden" name="client_id" value="' . $clientId . '">' .
-                      '<button type="submit" name="force_delete_client" class="btn btn-danger btn-sm ms-2" onclick="return confirm(\'Are you sure you want to FORCE DELETE this client? This will permanently delete all associated appointments and cases!\')">Force Delete</button>' .
+                      '<button type="submit" name="force_delete_client" class="btn btn-sm btn-danger mb-0 ms-2" onclick="return confirm(\'Are you sure you want to FORCE DELETE this client? This will permanently delete all associated appointments and cases!\')">Force Delete</button>' .
                       '</form>';
             $messageType = 'warning';
         } else {
@@ -293,8 +293,10 @@ if (empty($clients)) {
             <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold">' . $activeCases . '</span></td>
             <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold">' . $lastActivity . '</span></td>
             <td class="align-middle">
-                <a href="client-detail.php?id=' . $clientId . '" class="btn btn-sm btn-primary me-2">View</a>
-                <button type="button" class="btn btn-sm btn-danger" onclick="deleteClient(' . $clientId . ', \'' . addslashes($fullName) . '\')">Delete</button>
+                <div class="btn-actions">
+                <a href="client-detail.php?id=' . $clientId . '" class="btn btn-sm btn-primary mb-0">View</a>
+                <button type="button" class="btn btn-sm btn-danger mb-0" onclick="deleteClient(' . $clientId . ', \'' . addslashes($fullName) . '\')">Delete</button>
+                </div>
             </td>
         </tr>';
     }

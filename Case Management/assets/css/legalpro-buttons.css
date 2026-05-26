@@ -1,0 +1,74 @@
+/**
+ * LegalPro — solid row action buttons (admin Clients pattern)
+ * View = primary (blue/purple) | Edit = dark | Delete = danger | Download = secondary | Extra = info
+ */
+
+.btn-actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.main-content .btn-actions .btn,
+.main-content td .btn.btn-sm,
+.card .btn-actions .btn {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.12);
+}
+
+.main-content .btn-actions .btn:hover,
+.main-content td .btn.btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.18);
+}
+
+/* View / details */
+.btn.btn-sm.btn-primary {
+    --bs-btn-bg: #5e72e4;
+    --bs-btn-border-color: #5e72e4;
+    --bs-btn-hover-bg: #4d61d4;
+    --bs-btn-hover-border-color: #4d61d4;
+}
+
+/* Edit */
+.btn.btn-sm.btn-dark {
+    --bs-btn-bg: #344767;
+    --bs-btn-border-color: #344767;
+    --bs-btn-hover-bg: #293852;
+    --bs-btn-hover-border-color: #293852;
+}
+
+/* Delete */
+.btn.btn-sm.btn-danger {
+    --bs-btn-bg: #f5365c;
+    --bs-btn-border-color: #f5365c;
+    --bs-btn-hover-bg: #e62e52;
+    --bs-btn-hover-border-color: #e62e52;
+}
+
+/* Download / neutral */
+.btn.btn-sm.btn-secondary {
+    --bs-btn-bg: #8392ab;
+    --bs-btn-border-color: #8392ab;
+    --bs-btn-hover-bg: #6d7b96;
+    --bs-btn-hover-border-color: #6d7b96;
+}
+
+/* Contract / extra actions */
+.btn.btn-sm.btn-info {
+    --bs-btn-bg: #11cdef;
+    --bs-btn-border-color: #11cdef;
+    --bs-btn-hover-bg: #0eb8d6;
+    --bs-btn-hover-border-color: #0eb8d6;
+}
+
+/* Accept */
+.btn.btn-sm.btn-success {
+    --bs-btn-bg: #2dce89;
+    --bs-btn-border-color: #2dce89;
+}

@@ -173,11 +173,11 @@ $html = <<<'HTML'
 							<ul class="list-group">
 								<li class="list-group-item d-flex justify-content-between align-items-center">
 									Contract Law
-									<button class="btn btn-sm btn-danger">Remove</button>
+									<button class="btn btn-sm btn-danger mb-0">Remove</button>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center">
 									Family Law
-									<button class="btn btn-sm btn-danger">Remove</button>
+									<button class="btn btn-sm btn-danger mb-0">Remove</button>
 								</li>
 							</ul>
 						</div>

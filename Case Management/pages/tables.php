@@ -181,23 +181,15 @@ if (empty($cases)) {
                 <span class="text-secondary text-xs font-weight-bold">' . $dueDate . '</span>
             </td>
             <td class="align-middle">
-                <div class="d-flex gap-1">
-                    <a class="btn btn-sm btn-outline-primary mb-0" href="case-view.php?id=' . $caseId . '" title="View Details">
-                        <i class="ni ni-zoom-split-in"></i> View
-                    </a>
-                    <a class="btn btn-sm btn-outline-dark mb-0" href="case-edit.php?id=' . $caseId . '" title="Edit Case">
-                        <i class="ni ni-settings"></i> Edit
-                    </a>
+                <div class="btn-actions">
+                    <a class="btn btn-sm btn-primary mb-0" href="case-view.php?id=' . $caseId . '" title="View Details">View</a>
+                    <a class="btn btn-sm btn-dark mb-0" href="case-edit.php?id=' . $caseId . '" title="Edit Case">Edit</a>
                     <form method="post" class="d-inline" onsubmit="return confirm(\'Are you sure you want to delete case ' . $caseNumber . '? This action cannot be undone.\');" onclick="event.stopPropagation();">
                         <input type="hidden" name="form_type" value="delete">
                         <input type="hidden" name="case_id" value="' . $caseId . '">
-                        <button class="btn btn-sm btn-outline-danger mb-0" type="submit" title="Delete Case">
-                            <i class="ni ni-fat-remove"></i> Delete
-                        </button>
+                        <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Case">Delete</button>
                     </form>
-                    <a class="btn btn-sm btn-outline-info mb-0" href="case-contract.php?id=' . $caseId . '" target="_blank" onclick="event.stopPropagation();" title="Generate Contract">
-                        <i class="ni ni-single-copy-04"></i> Contract
-                    </a>
+                    <a class="btn btn-sm btn-info mb-0" href="case-contract.php?id=' . $caseId . '" target="_blank" onclick="event.stopPropagation();" title="Generate Contract">Contract</a>
                 </div>
             </td>
         </tr>';
@@ -259,9 +251,7 @@ $html = <<<'HTML'
 									<p class="text-sm text-muted mb-0">View and manage all cases</p>
 								</div>
 								<div class="col-lg-4 text-end">
-									<a href="case-new.php" class="btn btn-dark btn-sm mb-0">
-										<i class="ni ni-fat-add me-1"></i> New Case
-									</a>
+									<a href="case-new.php" class="btn btn-sm btn-primary mb-0">New Case</a>
 								</div>
 							</div>
 						</div>

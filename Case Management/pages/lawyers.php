@@ -306,12 +306,14 @@ if (empty($lawyers)) {
             </td>
             <td class="text-end">
                 <div class="d-flex gap-1 justify-content-end">
-                    <a href="lawyers.php?edit=' . (int)$lawyer['id'] . '" class="btn btn-sm btn-dark">Edit</a>
+                    <div class="btn-actions">
+                    <a href="lawyers.php?edit=' . (int)$lawyer['id'] . '" class="btn btn-sm btn-dark mb-0">Edit</a>
                     <form method="post" class="d-inline" onsubmit="return confirm(\'Are you sure you want to delete ' . htmlspecialchars($lawyer['first_name'] . ' ' . $lawyer['last_name']) . '? This action cannot be undone.\');">
                         <input type="hidden" name="form_type" value="delete_lawyer">
                         <input type="hidden" name="lawyer_id" value="' . (int)$lawyer['id'] . '">
-                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                        <button class="btn btn-sm btn-danger mb-0" type="submit">Delete</button>
                     </form>
+                    </div>
                 </div>
             </td>
         </tr>';

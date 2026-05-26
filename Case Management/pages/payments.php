@@ -538,7 +538,7 @@ $html = <<<'HTML'
                                 <select class="form-select form-select-sm" id="ledger_case_select">
                                     {LEDGER_OPTIONS}
                                 </select>
-                                <a href="financial-summary.php" class="btn btn-sm btn-outline-dark">Financial Summary</a>
+                                <a href="financial-summary.php" class="btn btn-sm btn-dark mb-0">Financial Summary</a>
                             </div>
                         </div>
                         <div class="card-body">

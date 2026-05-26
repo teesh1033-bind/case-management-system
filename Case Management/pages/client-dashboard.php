@@ -316,8 +316,8 @@ $html = <<<'HTML'
                             </div>
                             <div class="d-flex flex-wrap gap-2 flex-shrink-0">
                                 <a href="client-cases.php" class="btn btn-sm bg-gradient-primary text-white font-weight-bold mb-0 px-3">My cases</a>
-                                <a href="client-appointments.php" class="btn btn-sm btn-outline-primary font-weight-bold mb-0 px-3">Appointments</a>
-                                <a href="client-court-tracking.php" class="btn btn-sm btn-outline-primary font-weight-bold mb-0 px-3">Court tracking</a>
+                                <a href="client-appointments.php" class="btn btn-sm btn-primary font-weight-bold mb-0 px-3">Appointments</a>
+                                <a href="client-court-tracking.php" class="btn btn-sm btn-primary font-weight-bold mb-0 px-3">Court tracking</a>
                             </div>
                         </div>
                     </div>
@@ -397,7 +397,7 @@ $html = <<<'HTML'
                                 <h6>Recent cases</h6>
                                 <p class="cd-panel-sub">Latest updates on your matters</p>
                             </div>
-                            <a href="client-cases.php" class="btn btn-sm btn-outline-primary mb-0">View all</a>
+                            <a href="client-cases.php" class="btn btn-sm btn-primary mb-0">View all</a>
                         </div>
                         <div class="card-body p-3 pt-2">
                             {RECENT_CASES}
@@ -413,7 +413,7 @@ $html = <<<'HTML'
                                 <h6>Upcoming appointments</h6>
                                 <p class="cd-panel-sub">Accepted meetings on your calendar</p>
                             </div>
-                            <a href="client-appointments.php" class="btn btn-sm btn-outline-primary mb-0">Schedule</a>
+                            <a href="client-appointments.php" class="btn btn-sm btn-primary mb-0">Schedule</a>
                         </div>
                         <div class="card-body p-3 pt-2">
                             {UPCOMING_APPOINTMENTS}

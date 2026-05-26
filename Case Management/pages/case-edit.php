@@ -533,7 +533,7 @@ foreach ($existingServices as $service) {
             <form method="post" class="d-inline" onsubmit="return confirm(\'Delete this service?\');">
                 <input type="hidden" name="form_type" value="delete_service">
                 <input type="hidden" name="service_id" value="' . (int)$service['id'] . '">
-                <button class="btn btn-sm btn-outline-danger" type="submit" title="Delete Service">
+                <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Service">
                     <i class="ni ni-fat-remove"></i>
                 </button>
             </form>
@@ -621,7 +621,7 @@ if (!empty($tasks)) {
                 <form method="post" style="display: inline;" onsubmit="return confirm(\'Are you sure you want to delete this task? This will remove it from the assigned lawyer\'s task list.\')">
                     <input type="hidden" name="form_type" value="delete_task">
                     <input type="hidden" name="task_id" value="' . $task['id'] . '">
-                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                    <button type="submit" class="btn btn-sm btn-danger mb-0">
                         <i class="ni ni-fat-remove"></i>
                     </button>
                 </form>
@@ -645,11 +645,11 @@ foreach ($existingStages as $stage) {
         <div class="card-header d-flex justify-content-between align-items-center">
             <h6 class="mb-0">Stage ' . (int)$stage['stage_number'] . ': ' . htmlspecialchars($stage['title']) . '</h6>
             <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-outline-primary" onclick="editStage(' . (int)$stage['id'] . ', ' . (int)$stage['stage_number'] . ', \'' . addslashes($stage['title']) . '\', \'' . addslashes($stage['description']) . '\', \'' . addslashes($stage['result']) . '\', \'' . (!empty($stage['start_date']) ? $stage['start_date'] : '') . '\', \'' . (!empty($stage['expected_end_date']) ? $stage['expected_end_date'] : '') . '\', \'' . (!empty($stage['actual_end_date']) ? $stage['actual_end_date'] : '') . '\')">Edit</button>
+                <button class="btn btn-sm btn-dark mb-0" onclick="editStage(' . (int)$stage['id'] . ', ' . (int)$stage['stage_number'] . ', \'' . addslashes($stage['title']) . '\', \'' . addslashes($stage['description']) . '\', \'' . addslashes($stage['result']) . '\', \'' . (!empty($stage['start_date']) ? $stage['start_date'] : '') . '\', \'' . (!empty($stage['expected_end_date']) ? $stage['expected_end_date'] : '') . '\', \'' . (!empty($stage['actual_end_date']) ? $stage['actual_end_date'] : '') . '\')">Edit</button>
                 <form method="post" class="d-inline" onsubmit="return confirm(\'Delete this stage?\');">
                     <input type="hidden" name="form_type" value="delete_stage">
                     <input type="hidden" name="stage_id" value="' . (int)$stage['id'] . '">
-                    <button class="btn btn-sm btn-outline-danger" type="submit">
+                    <button class="btn btn-sm btn-danger mb-0" type="submit">
                         <i class="ni ni-fat-remove"></i>
                     </button>
                 </form>
@@ -680,7 +680,7 @@ foreach ($existingStages as $stage) {
                     <p class="text-sm">' . ($stage['actual_end_date'] ? date('M j, Y', strtotime($stage['actual_end_date'])) : 'Not set') . '</p>
                 </div>
             </div>
-            ' . ($stage['file_path'] ? '<div class="mt-3"><a href="../' . htmlspecialchars($stage['file_path']) . '" target="_blank" class="btn btn-sm btn-outline-primary">View Attached File</a></div>' : '') . '
+            ' . ($stage['file_path'] ? '<div class="mt-3"><a href="../' . htmlspecialchars($stage['file_path']) . '" target="_blank" class="btn btn-sm btn-primary mb-0">View Attached File</a></div>' : '') . '
         </div>
     </div>';
 }

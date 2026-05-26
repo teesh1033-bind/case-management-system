@@ -409,10 +409,10 @@ if (empty($cases)) {
                         </div>
                     </div>
                     <div class="d-flex gap-2">
-                        <a class="btn btn-sm btn-primary" href="' . htmlspecialchars($downloadUrl) . '" target="_blank" title="View Document">
+                        <a class="btn btn-sm btn-primary mb-0" href="' . htmlspecialchars($downloadUrl) . '" target="_blank" title="View Document">
                             <i class="ni ni-zoom-split-in me-1"></i>View
                         </a>
-                        <a class="btn btn-sm btn-success" href="' . htmlspecialchars($downloadUrl) . '" download title="Download Document">
+                        <a class="btn btn-sm btn-secondary mb-0" href="' . htmlspecialchars($downloadUrl) . '" download title="Download Document">
                             <i class="ni ni-cloud-download-95 me-1"></i>Download
                         </a>
                     </div>
@@ -504,10 +504,10 @@ if (empty($recentDocuments)) {
                 </div>
             </div>
             <div class="d-flex gap-2">
-                <a class="btn btn-sm btn-primary" href="' . htmlspecialchars($downloadUrl) . '" target="_blank" title="View Document">
+                <a class="btn btn-sm btn-primary mb-0" href="' . htmlspecialchars($downloadUrl) . '" target="_blank" title="View Document">
                     <i class="ni ni-zoom-split-in me-1"></i>View
                 </a>
-                <a class="btn btn-sm btn-success" href="' . htmlspecialchars($downloadUrl) . '" download title="Download Document">
+                <a class="btn btn-sm btn-secondary mb-0" href="' . htmlspecialchars($downloadUrl) . '" download title="Download Document">
                     <i class="ni ni-cloud-download-95 me-1"></i>Download
                 </a>
             </div>
@@ -529,7 +529,7 @@ if (!empty($previewContent)) {
     <div class="card mt-4">
         <div class="card-header pb-0 d-flex justify-content-between align-items-center">
             <h6 class="mb-0">' . htmlspecialchars($previewTitle) . '</h6>
-            <button class="btn btn-sm btn-outline-dark" onclick="window.print()">Print</button>
+            <button class="btn btn-sm btn-dark mb-0" onclick="window.print()">Print</button>
         </div>
         <div class="card-body">
             <div class="border rounded p-3 bg-white" style="min-height: 200px;">

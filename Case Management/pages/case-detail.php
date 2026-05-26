@@ -168,7 +168,7 @@ $html = <<<'HTML'
 											<h6>$1,300</h6>
 										</div>
 									</div>
-									<a href="billing.html" class="btn btn-sm btn-outline-primary mt-2">Generate Invoice</a>
+									<a href="billing.html" class="btn btn-sm btn-primary mb-0 mt-2">Generate Invoice</a>
 								</div>
 								<div class="tab-pane" id="documents" role="tabpanel">
 									<div class="mb-2">
@@ -178,8 +178,8 @@ $html = <<<'HTML'
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											Affidavit.pdf
 											<div>
-												<button class="btn btn-sm btn-outline-dark">View</button>
-												<button class="btn btn-sm btn-outline-danger">Delete</button>
+												<button class="btn btn-sm btn-primary mb-0">View</button>
+												<button class="btn btn-sm btn-danger mb-0">Delete</button>
 											</div>
 										</li>
 									</ul>

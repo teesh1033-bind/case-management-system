@@ -571,9 +571,7 @@ $html = <<<'HTML'
 											<tfoot>
 												<tr>
 													<td colspan="3">
-														<button type="button" class="btn btn-sm btn-outline-primary" id="add-service-row">
-															<i class="fas fa-plus"></i> Add Service
-														</button>
+														<button type="button" class="btn btn-sm btn-primary mb-0" id="add-service-row">Add Service</button>
 													</td>
 												</tr>
 											</tfoot>
@@ -643,9 +641,7 @@ $html = <<<'HTML'
 						step="0.01" min="0" placeholder="0.00" value="${escapeHtml(price)}" required>
 				</td>
 				<td>
-					<button type="button" class="btn btn-sm btn-danger remove-service-row">
-						<i class="fas fa-trash"></i>
-					</button>
+					<button type="button" class="btn btn-sm btn-danger mb-0 remove-service-row">Delete</button>
 				</td>
 			`;
 			tbody.appendChild(row);
@@ -672,8 +668,11 @@ $html = <<<'HTML'
 		}
 		
 		function escapeHtml(text) {
+			if (text === null || text === undefined) {
+				return '';
+			}
 			const div = document.createElement('div');
-			div.textContent = text;
+			div.textContent = String(text);
 			return div.innerHTML;
 		}
 		
@@ -682,7 +681,9 @@ $html = <<<'HTML'
 			// Add existing services if editing
 			if (existingServices && existingServices.length > 0) {
 				existingServices.forEach(function(service) {
-					addServiceRow(service.service_name || service.name, service.price || '');
+					const name = service.service_name || service.name || '';
+					const price = service.price != null ? service.price : '';
+					addServiceRow(name, price);
 				});
 			} else {
 				// Add one empty row by default

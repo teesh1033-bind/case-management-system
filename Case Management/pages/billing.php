@@ -371,7 +371,7 @@ $html = <<<'HTML'
 									<h6 class="mb-0">Invoices</h6>
 								</div>
 								<div class="col-6 text-end">
-									<button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+									<button class="btn btn-primary btn-sm mb-0">View All</button>
 								</div>
 							</div>
 						</div>
@@ -407,7 +407,7 @@ $html = <<<'HTML'
 					<div class="card">
 						<div class="card-header pb-0 px-3 d-flex justify-content-between align-items-center">
 							<h6 class="mb-0">Expenses</h6>
-							<a class="btn btn-sm btn-outline-dark" href="javascript:;">Add Expense</a>
+							<a class="btn btn-sm btn-dark mb-0" href="javascript:;">Add Expense</a>
 						</div>
 						<div class="card-body pt-4 p-3">
 							<div class="table-responsive">

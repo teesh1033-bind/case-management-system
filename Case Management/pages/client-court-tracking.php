@@ -424,7 +424,7 @@ if (!empty($_SESSION['error_message'])) {
                                 <h5 class="text-dark">Calendar</h5>
                                 <p class="text-sm text-muted mb-0">Month, week, or day — click an entry to open details.</p>
                             </div>
-                            <a href="client-dashboard.php" class="btn btn-sm btn-outline-primary mb-0">Dashboard</a>
+                            <a href="client-dashboard.php" class="btn btn-sm btn-primary mb-0">Dashboard</a>
                         </div>
                         <div class="cct-cal-wrap">
                             <div id="calendar"></div>
@@ -441,7 +441,7 @@ if (!empty($_SESSION['error_message'])) {
                                 <h5 class="text-dark">All court dates</h5>
                                 <p class="text-sm text-muted mb-0">Sorted by date, earliest first.</p>
                             </div>
-                            <a href="client-cases.php" class="btn btn-sm btn-outline-primary mb-0">My cases</a>
+                            <a href="client-cases.php" class="btn btn-sm btn-primary mb-0">My cases</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-0">
                             <?php if (empty($court_dates)): ?>
@@ -511,7 +511,7 @@ if (!empty($_SESSION['error_message'])) {
                                                         <?php echo $rowStatusBadge; ?>
                                                     </td>
                                                     <td class="align-middle text-end pe-4">
-                                                        <button type="button" class="btn btn-sm btn-outline-primary mb-0" onclick="viewCourtDate(<?php echo (int) $date['id']; ?>)" title="View details">
+                                                        <button type="button" class="btn btn-sm btn-primary mb-0" onclick="viewCourtDate(<?php echo (int) $date['id']; ?>)" title="View details">
                                                             Details
                                                         </button>
                                                     </td>

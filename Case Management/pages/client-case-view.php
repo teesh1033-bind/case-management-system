@@ -291,7 +291,7 @@ if (!empty($documents)) {
             <div class="w-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="mb-0 text-sm">' . htmlspecialchars($doc['label'] ?: $doc['filename']) . '</h6>
-                    <a href="' . htmlspecialchars($doc['filepath']) . '" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+                    <a href="' . htmlspecialchars($doc['filepath']) . '" target="_blank" class="btn btn-sm btn-primary mb-0">View</a>
                 </div>
                 <p class="text-xs text-secondary mb-0">Uploaded by ' . htmlspecialchars($doc['uploaded_by']) . ' on ' . date('M d, Y', strtotime($doc['uploaded_at'])) . '</p>
             </div>

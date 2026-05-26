@@ -117,7 +117,7 @@ if (empty($cases)) {
                 <p class="text-xs font-weight-bold mb-0 text-truncate" style="max-width: 10rem;" title="' . htmlspecialchars($lawyerNames) . '">' . htmlspecialchars($lawyerNames) . '</p>
             </td>
             <td class="align-middle text-end pe-4">
-                <a href="client-case-view.php?id=' . $caseId . '" class="btn btn-sm btn-outline-primary mb-0">View</a>
+                <a href="client-case-view.php?id=' . $caseId . '" class="btn btn-sm btn-primary mb-0">View</a>
             </td>
         </tr>';
     }
@@ -360,7 +360,7 @@ $html = <<<'HTML'
                                 <h5 class="text-dark">Case list</h5>
                                 <p class="text-sm text-muted mb-0">Sorted by most recently updated.</p>
                             </div>
-                            <a href="client-dashboard.php" class="btn btn-sm btn-outline-primary mb-0">Dashboard</a>
+                            <a href="client-dashboard.php" class="btn btn-sm btn-primary mb-0">Dashboard</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-0">
                             <div class="table-responsive">

@@ -280,8 +280,10 @@ if (empty($documents)) {
             <td class="text-center">' . htmlspecialchars($fileType) . '</td>
             <td class="text-center">' . $fileSizeFormatted . '</td>
             <td class="text-end">
-                <a href="' . htmlspecialchars($fileUrl) . '" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                <a href="' . htmlspecialchars($fileUrl) . '" download class="btn btn-sm btn-outline-secondary">Download</a>
+                <div class="btn-actions">
+                <a href="' . htmlspecialchars($fileUrl) . '" target="_blank" class="btn btn-sm btn-primary mb-0">View</a>
+                <a href="' . htmlspecialchars($fileUrl) . '" download class="btn btn-sm btn-secondary mb-0">Download</a>
+                </div>
             </td>
         </tr>';
     }

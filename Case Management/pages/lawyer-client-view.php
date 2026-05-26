@@ -119,7 +119,7 @@ if (empty($clientCases)) {
                     <p class="text-sm text-muted mb-2">Case #' . htmlspecialchars($case['id']) . '</p>
                     <p class="text-sm mb-2">' . htmlspecialchars(substr($case['description'] ?: 'No description', 0, 100)) . '...</p>
                     <div class="text-end">
-                        <a href="lawyer-case-view.php?id=' . (int)$case['id'] . '" class="btn btn-sm btn-outline-primary">View Case</a>
+                        <a href="lawyer-case-view.php?id=' . (int)$case['id'] . '" class="btn btn-sm btn-primary mb-0">View</a>
                     </div>
                 </div>
             </div>
@@ -181,8 +181,10 @@ if (empty($clientDocuments)) {
             <td class="text-center">' . $fileSizeFormatted . '</td>
             <td class="text-center">' . date('M d, Y', strtotime($document['uploaded_at'])) . '</td>
             <td class="text-end">
-                <a href="../uploads/' . htmlspecialchars($document['file_path']) . '" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                <a href="../uploads/' . htmlspecialchars($document['file_path']) . '" download class="btn btn-sm btn-outline-secondary">Download</a>
+                <div class="btn-actions">
+                <a href="../uploads/' . htmlspecialchars($document['file_path']) . '" target="_blank" class="btn btn-sm btn-primary mb-0">View</a>
+                <a href="../uploads/' . htmlspecialchars($document['file_path']) . '" download class="btn btn-sm btn-secondary mb-0">Download</a>
+                </div>
             </td>
         </tr>';
     }

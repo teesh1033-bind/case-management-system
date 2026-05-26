@@ -127,21 +127,22 @@ if (empty($appointments)) {
             <td>' . htmlspecialchars($appointment['notes'] ?: 'No notes') . '</td>
             <td class="text-center">' . $statusBadge . '</td>
             <td class="text-end">
-                <a href="lawyer-case-view.php?id=' . (int)$appointment['case_id'] . '" class="btn btn-sm btn-primary me-1">View Case</a>';
+                <div class="btn-actions">
+                <a href="lawyer-case-view.php?id=' . (int)$appointment['case_id'] . '" class="btn btn-sm btn-primary mb-0">View</a>';
                 if ($appointment['status'] === 'pending') {
                     $appointmentsTable .= '
                 <form method="post" class="d-inline">
                     <input type="hidden" name="appointment_id" value="' . (int)$appointment['id'] . '">
                     <input type="hidden" name="appointment_action" value="accept">
-                    <button type="submit" class="btn btn-sm btn-success me-1" onclick="return confirm(\'Accept this appointment?\')">Accept</button>
+                    <button type="submit" class="btn btn-sm btn-success mb-0" onclick="return confirm(\'Accept this appointment?\')">Accept</button>
                 </form>
                 <form method="post" class="d-inline">
                     <input type="hidden" name="appointment_id" value="' . (int)$appointment['id'] . '">
                     <input type="hidden" name="appointment_action" value="reject">
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Reject this appointment?\')">Reject</button>
+                    <button type="submit" class="btn btn-sm btn-danger mb-0" onclick="return confirm(\'Reject this appointment?\')">Reject</button>
                 </form>';
                 }
-            $appointmentsTable .= '</td>
+            $appointmentsTable .= '</div></td>
         </tr>';
     }
 }
