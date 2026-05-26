@@ -46,6 +46,80 @@
     white-space: nowrap;
 }
 
+/* Payments page widgets */
+.payments-widget-card .card-body {
+    overflow: hidden;
+}
+
+.payments-widget-card .table-responsive {
+    overflow-x: visible;
+}
+
+.payments-widget-table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.payments-widget-table th,
+.payments-widget-table td {
+    vertical-align: middle;
+    padding: 0.55rem 0.4rem;
+}
+
+.payments-widget-table .pw-client {
+    width: 26%;
+}
+
+.payments-widget-table .pw-amount {
+    width: 16%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.payments-widget-table .pw-method {
+    width: 14%;
+    text-align: center;
+}
+
+.payments-widget-table .pw-date {
+    width: 14%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.payments-widget-table .pw-notes {
+    width: 30%;
+}
+
+.payments-widget-table .pw-case {
+    width: 38%;
+}
+
+.payments-widget-table--outstanding .pw-case {
+    width: 40%;
+}
+
+.payments-widget-table--outstanding .pw-fee,
+.payments-widget-table--outstanding .pw-paid,
+.payments-widget-table--outstanding .pw-balance {
+    width: 20%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.payments-widget-table .payments-notes-cell {
+    max-width: 100%;
+}
+
+.payments-widget-table .badge {
+    font-size: 0.62rem;
+    padding: 0.3em 0.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
 .btn-actions.case-actions .btn,
 .btn-actions.case-actions .d-inline-block > .btn {
     width: 7.75rem;

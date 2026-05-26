@@ -259,31 +259,23 @@ foreach ($cases as $case) {
     if ($balance > 0.01) {
         $outstandingCount++;
         $totalOutstanding += $balance;
-        $badgeClass = 'badge bg-gradient-warning';
-        if ($balance <= ($estimated * 0.2)) {
-            $badgeClass = 'badge bg-gradient-success';
-        }
+        $caseLabel = $caseNumber . ' · ' . $case['title'];
 
         $outstandingRows .= '
         <tr>
-            <td>
-                <div class="d-flex flex-column">
-                    <span class="text-sm fw-bold">' . htmlspecialchars($caseNumber . ' · ' . $case['title']) . '</span>
-                    <small class="text-muted">' . htmlspecialchars($clientName) . '</small>
-                </div>
+            <td class="pw-case">
+                <span class="text-sm fw-semibold d-block text-truncate" title="' . htmlspecialchars($caseLabel) . '">' . htmlspecialchars($caseLabel) . '</span>
+                <span class="text-xs text-muted d-block text-truncate">' . htmlspecialchars($clientName) . '</span>
             </td>
-            <td class="text-center">' . formatCurrency($estimated) . '</td>
-            <td class="text-center text-success fw-bold">' . formatCurrency($paid) . '</td>
-            <td class="text-center">
-                <span class="' . $badgeClass . '">' . formatCurrency($balance) . '</span>
-            </td>
-            <td class="text-end text-xs">' . ($lastPayment !== '—' ? htmlspecialchars($lastPayment) : '<span class="text-muted">No payments</span>') . '</td>
+            <td class="text-sm pw-fee">' . formatCurrency($estimated) . '</td>
+            <td class="text-sm text-success pw-paid">' . formatCurrency($paid) . '</td>
+            <td class="text-sm fw-bold text-warning pw-balance">' . formatCurrency($balance) . '</td>
         </tr>';
     }
 }
 
 if (!$outstandingRows) {
-    $outstandingRows = '<tr><td colspan="5" class="text-center py-4 text-muted">All cases are fully paid.</td></tr>';
+    $outstandingRows = '<tr><td colspan="4" class="text-center py-4 text-muted">All cases are fully paid.</td></tr>';
 }
 
 // Totals
@@ -327,23 +319,25 @@ if (empty($recentPayments)) {
     $recentPaymentsRows = '<tr><td colspan="5" class="text-center py-4 text-muted">No payments recorded yet.</td></tr>';
 } else {
     foreach ($recentPayments as $payment) {
-        $caseNumber = 'C-' . str_pad($payment['case_id'], 4, '0', STR_PAD_LEFT);
         $clientName = isset($payment['client_name']) && $payment['client_name'] ? $payment['client_name'] : 'Unknown Client';
         $methodLabel = isset($allowedMethods[$payment['method']]) ? $allowedMethods[$payment['method']] : ucfirst($payment['method']);
-        $notesPreview = isset($payment['notes']) && $payment['notes'] ? htmlspecialchars($payment['notes']) : '<span class="text-muted">—</span>';
+        $payDate = !empty($payment['payment_date'])
+            ? date('d M Y', strtotime($payment['payment_date']))
+            : '—';
+        $notesRaw = isset($payment['notes']) && $payment['notes'] ? trim($payment['notes']) : '';
+        if ($notesRaw !== '') {
+            $notesCell = '<span class="text-xs text-muted payments-notes-cell d-block text-truncate" title="' . htmlspecialchars($notesRaw) . '">' . htmlspecialchars($notesRaw) . '</span>';
+        } else {
+            $notesCell = '<span class="text-muted">—</span>';
+        }
 
         $recentPaymentsRows .= '
         <tr>
-            <td>
-                <div class="d-flex flex-column">
-                    <span class="text-sm fw-bold">' . htmlspecialchars($clientName) . '</span>
-                    <small class="text-muted">' . htmlspecialchars($caseNumber . ' · ' . $payment['case_title']) . '</small>
-                </div>
-            </td>
-            <td class="text-center">' . formatCurrency($payment['amount']) . '</td>
-            <td class="text-center"><span class="badge bg-gradient-dark">' . htmlspecialchars($methodLabel) . '</span></td>
-            <td class="text-center">' . htmlspecialchars($payment['payment_date']) . '</td>
-            <td class="text-end text-xs">' . $notesPreview . '</td>
+            <td class="text-sm fw-semibold pw-client">' . htmlspecialchars($clientName) . '</td>
+            <td class="text-sm fw-semibold pw-amount">' . formatCurrency($payment['amount']) . '</td>
+            <td class="pw-method"><span class="badge bg-gradient-secondary">' . htmlspecialchars($methodLabel) . '</span></td>
+            <td class="text-sm text-muted pw-date">' . htmlspecialchars($payDate) . '</td>
+            <td class="pw-notes">' . $notesCell . '</td>
         </tr>';
     }
 }
@@ -376,7 +370,8 @@ $html = <<<'HTML'
     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
-<link href="../assets/css/app-font-montserrat.css?v=1" rel="stylesheet" />
+<link href="../assets/css/app-font-montserrat.css?v=2" rel="stylesheet" />
+<link href="../assets/css/legalpro-buttons.css?v=5" rel="stylesheet" />
 </head>
 <body class="g-sidenav-show bg-gray-100 legalpro-admin-portal">
     <div class="min-height-300 bg-legalpro-admin position-absolute w-100"></div>
@@ -546,19 +541,19 @@ $html = <<<'HTML'
                                 <div class="col-md-4">
                                     <div class="border rounded p-3 text-center mb-3">
                                         <p class="text-xs text-muted mb-1">Total Fee</p>
-                                        <h5 class="mb-0" id="ledger-fee">$0.00</h5>
+                                        <h5 class="mb-0" id="ledger-fee">{CURRENCY_ZERO}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="border rounded p-3 text-center mb-3">
                                         <p class="text-xs text-muted mb-1">Paid</p>
-                                        <h5 class="mb-0 text-success" id="ledger-paid">$0.00</h5>
+                                        <h5 class="mb-0 text-success" id="ledger-paid">{CURRENCY_ZERO}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="border rounded p-3 text-center mb-3">
                                         <p class="text-xs text-muted mb-1">Balance</p>
-                                        <h5 class="mb-0 text-warning" id="ledger-balance">$0.00</h5>
+                                        <h5 class="mb-0 text-warning" id="ledger-balance">{CURRENCY_ZERO}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -582,20 +577,20 @@ $html = <<<'HTML'
             </div>
             <div class="row mt-4">
                 <div class="col-lg-7">
-                    <div class="card">
+                    <div class="card payments-widget-card">
                         <div class="card-header pb-0">
                             <h6>Recent Payments</h6>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
+                        <div class="card-body px-3 pt-0 pb-2">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0 payments-widget-table">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Client / Case</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Amount</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Method</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Date</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-end opacity-7">Notes</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-client">Client</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-amount">Amount</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-method">Method</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-date">Date</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-notes">Notes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -607,21 +602,20 @@ $html = <<<'HTML'
                     </div>
                 </div>
                 <div class="col-lg-5 mt-4 mt-lg-0">
-                    <div class="card h-100">
+                    <div class="card h-100 payments-widget-card">
                         <div class="card-header pb-0">
                             <h6>Outstanding Balances</h6>
-                            <p class="text-sm text-muted mb-0">Track cases still on a payment plan.</p>
+                            <p class="text-sm text-muted mb-0">Cases with a remaining balance.</p>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
+                        <div class="card-body px-3 pt-0 pb-2">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0 payments-widget-table payments-widget-table--outstanding">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Case</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Fee</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Paid</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Balance</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-end opacity-7">Last Payment</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-case">Case</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-fee">Fee</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-paid">Paid</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pw-balance">Balance</th>
                                         </tr>
                                     </thead>
                                     <tbody>
