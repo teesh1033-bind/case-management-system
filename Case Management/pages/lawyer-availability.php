@@ -122,17 +122,19 @@ $html = <<<'HTML'
             margin: 0;
         }
         .time-slot-delete-btn {
-            width: 28px;
-            height: 28px;
+            min-width: 68px;
+            height: 30px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             line-height: 1 !important;
-            padding: 0;
+            padding: 0 10px !important;
             margin: 0;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .time-slot.available {
             background: #d4edda;

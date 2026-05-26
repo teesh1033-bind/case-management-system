@@ -259,7 +259,7 @@ try {
 
 $invoiceRows = '';
 if (empty($invoices)) {
-    $invoiceRows = '<tr><td colspan="7" class="text-center text-muted py-4">No invoices recorded yet.</td></tr>';
+    $invoiceRows = '<tr><td colspan="6" class="text-center text-muted py-4">No invoices recorded yet.</td></tr>';
 } else {
     foreach ($invoices as $invoice) {
         $statusLabel = isset($statusOptions[strtolower($invoice['status'])]) ? $statusOptions[strtolower($invoice['status'])] : ucfirst($invoice['status']);
@@ -285,26 +285,21 @@ if (empty($invoices)) {
                     <small class="text-muted">' . ($invoice['issue_date'] ? htmlspecialchars(date('d M Y', strtotime($invoice['issue_date']))) : 'N/A') . '</small>
                 </div>
             </td>
-            <td>
-                <p class="text-sm mb-0">' . htmlspecialchars($invoice['client_name'] ?: 'Client') . '</p>
-                <p class="text-xs text-muted mb-0">' . htmlspecialchars($invoice['case_title'] ?: 'No case linked') . '</p>
-            </td>
-            <td class="text-center">' . htmlspecialchars(formatCurrency($invoice['amount'])) . '</td>
+            <td class="text-sm">' . htmlspecialchars($invoice['client_name'] ?: '—') . '</td>
+            <td class="text-center text-sm fw-semibold">' . htmlspecialchars(formatCurrency($invoice['amount'])) . '</td>
             <td class="text-center">
-                <span class="badge ' . $badgeClass . '">' . htmlspecialchars($statusLabel) . '</span>
+                <span class="badge ' . $badgeClass . ' text-uppercase" style="font-size: 0.65rem;">' . htmlspecialchars($statusLabel) . '</span>
             </td>
-            <td class="text-center">' . ($invoice['due_date'] ? htmlspecialchars(date('d M Y', strtotime($invoice['due_date']))) : 'N/A') . '</td>
-            <td class="text-end">
-                <div class="d-flex gap-1 justify-content-end">
-                    <div class="btn-actions">
-                    <a href="invoices.php?id=' . (int)$invoice['id'] . '" class="btn btn-sm btn-dark mb-0" title="Edit Invoice">Edit</a>
-                    <a href="invoice-download.php?id=' . (int)$invoice['id'] . '" class="btn btn-sm btn-secondary mb-0" title="Download Invoice" target="_blank">Download</a>
-                    <form method="post" class="d-inline" onsubmit="return confirm(\'Are you sure you want to delete invoice ' . htmlspecialchars($invoice['invoice_number']) . '? This action cannot be undone.\');">
+            <td class="text-center text-sm">' . ($invoice['due_date'] ? htmlspecialchars(date('d M Y', strtotime($invoice['due_date']))) : 'N/A') . '</td>
+            <td class="text-end invoice-actions-cell">
+                <div class="btn-actions invoice-actions">
+                    <a href="invoices.php?id=' . (int)$invoice['id'] . '" class="btn btn-sm btn-dark mb-0">Edit</a>
+                    <a href="invoice-download.php?id=' . (int)$invoice['id'] . '" class="btn btn-sm btn-secondary mb-0" target="_blank">Download</a>
+                    <form method="post" class="d-inline-block mb-0" onsubmit="return confirm(\'Delete invoice ' . htmlspecialchars($invoice['invoice_number']) . '? This cannot be undone.\');">
                         <input type="hidden" name="form_type" value="delete">
                         <input type="hidden" name="invoice_id" value="' . (int)$invoice['id'] . '">
-                        <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Invoice">Delete</button>
+                        <button class="btn btn-sm btn-danger mb-0" type="submit">Delete</button>
                     </form>
-                    </div>
                 </div>
             </td>
         </tr>';
@@ -414,7 +409,7 @@ $html = <<<'HTML'
                                     <label class="form-label">Notes</label>
                                     <textarea class="form-control" rows="3" name="notes" placeholder="Payment terms, highlights...">{FORM_NOTES}</textarea>
                                 </div>
-                                <button class="btn btn-dark w-100">{FORM_BUTTON}</button>
+                                <button class="btn btn-primary w-100 mb-0">{FORM_BUTTON}</button>
                             </form>
                         </div>
                     </div>
@@ -426,11 +421,11 @@ $html = <<<'HTML'
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center mb-0 invoice-list-table">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Invoice</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Client / Case</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Client</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Amount</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Status</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Due</th>

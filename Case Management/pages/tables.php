@@ -181,10 +181,10 @@ if (empty($cases)) {
                 <span class="text-secondary text-xs font-weight-bold">' . $dueDate . '</span>
             </td>
             <td class="align-middle">
-                <div class="btn-actions">
+                <div class="btn-actions case-actions">
                     <a class="btn btn-sm btn-primary mb-0" href="case-view.php?id=' . $caseId . '" title="View Details">View</a>
                     <a class="btn btn-sm btn-dark mb-0" href="case-edit.php?id=' . $caseId . '" title="Edit Case">Edit</a>
-                    <form method="post" class="d-inline" onsubmit="return confirm(\'Are you sure you want to delete case ' . $caseNumber . '? This action cannot be undone.\');" onclick="event.stopPropagation();">
+                    <form method="post" class="d-inline-block mb-0" onsubmit="return confirm(\'Are you sure you want to delete case ' . $caseNumber . '? This action cannot be undone.\');" onclick="event.stopPropagation();">
                         <input type="hidden" name="form_type" value="delete">
                         <input type="hidden" name="case_id" value="' . $caseId . '">
                         <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Case">Delete</button>

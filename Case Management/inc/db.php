@@ -82,17 +82,17 @@ function setSetting($key, $value) {
 
 function getCurrencyOptions() {
     return [
+        'MUR' => ['label' => 'Mauritian Rupee (Rs)', 'symbol' => 'Rs', 'prefix' => true],
         'USD' => ['label' => 'US Dollar ($)', 'symbol' => '$', 'prefix' => true],
         'EUR' => ['label' => 'Euro (€)', 'symbol' => '€', 'prefix' => true],
-        'MUR' => ['label' => 'Mauritian Rupee (Rs)', 'symbol' => 'Rs', 'prefix' => true],
     ];
 }
 
 function getCurrencyConfig() {
     $options = getCurrencyOptions();
-    $code = strtoupper((string) getSetting('currency', 'USD'));
+    $code = strtoupper((string) getSetting('currency', 'MUR'));
     if (!isset($options[$code])) {
-        $code = 'USD';
+        $code = 'MUR';
     }
     return ['code' => $code] + $options[$code];
 }
