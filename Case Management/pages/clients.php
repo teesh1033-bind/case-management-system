@@ -350,7 +350,7 @@ $html = preg_replace('/<\/body>\s*<\/html>$/i', $footer . '
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST" style="display: inline;">
                     <input type="hidden" name="client_id" id="clientIdToDelete">
-                    <button type="submit" name="delete_client" class="btn btn-danger">Delete Client</button>
+                    <button type="submit" name="delete_client" class="btn btn-danger mb-0">Delete Client</button>
                 </form>
             </div>
         </div>

@@ -351,7 +351,7 @@ foreach ($daysOfWeek as $day) {
             $slotClass = $slot['slot_type'] === 'available' ? 'available' : 'unavailable';
             $deleteBtn = '<form method="POST" class="time-slot-delete-form">
                             <input type="hidden" name="slot_id" value="' . $slot['id'] . '">
-                            <button type="submit" name="delete_slot" class="btn btn-sm btn-danger btn-color-danger time-slot-delete-btn" onclick="return confirm(\'Delete this time slot?\')" aria-label="Delete time slot">&times;</button>
+                            <button type="submit" name="delete_slot" class="btn btn-sm btn-danger mb-0 time-slot-delete-btn" onclick="return confirm(\'Delete this time slot?\')" aria-label="Delete time slot">Delete</button>
                           </form>';
 
             $scheduleHtml .= '<div class="time-slot ' . $slotClass . '">

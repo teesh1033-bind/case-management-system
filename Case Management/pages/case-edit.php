@@ -533,9 +533,7 @@ foreach ($existingServices as $service) {
             <form method="post" class="d-inline" onsubmit="return confirm(\'Delete this service?\');">
                 <input type="hidden" name="form_type" value="delete_service">
                 <input type="hidden" name="service_id" value="' . (int)$service['id'] . '">
-                <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Service">
-                    <i class="ni ni-fat-remove"></i>
-                </button>
+                <button class="btn btn-sm btn-danger mb-0" type="submit" title="Delete Service">Delete</button>
             </form>
         </div>
     </div>';
@@ -621,9 +619,7 @@ if (!empty($tasks)) {
                 <form method="post" style="display: inline;" onsubmit="return confirm(\'Are you sure you want to delete this task? This will remove it from the assigned lawyer\'s task list.\')">
                     <input type="hidden" name="form_type" value="delete_task">
                     <input type="hidden" name="task_id" value="' . $task['id'] . '">
-                    <button type="submit" class="btn btn-sm btn-danger mb-0">
-                        <i class="ni ni-fat-remove"></i>
-                    </button>
+                    <button type="submit" class="btn btn-sm btn-danger mb-0">Delete</button>
                 </form>
             </td>
         </tr>';
@@ -649,9 +645,7 @@ foreach ($existingStages as $stage) {
                 <form method="post" class="d-inline" onsubmit="return confirm(\'Delete this stage?\');">
                     <input type="hidden" name="form_type" value="delete_stage">
                     <input type="hidden" name="stage_id" value="' . (int)$stage['id'] . '">
-                    <button class="btn btn-sm btn-danger mb-0" type="submit">
-                        <i class="ni ni-fat-remove"></i>
-                    </button>
+                    <button class="btn btn-sm btn-danger mb-0" type="submit">Delete</button>
                 </form>
             </div>
         </div>

@@ -406,7 +406,7 @@ if ($message) {
 $isEditing = !empty($formData['appointment_id']);
 $formTitle = $isEditing ? 'Update Appointment' : 'Book Appointment';
 $submitLabel = $isEditing ? 'Save Changes' : 'Submit Request';
-$cancelLink = $isEditing ? '<a href="appointments.php" class="btn btn-outline-secondary btn-sm mb-0" title="Cancel editing"><i class="ni ni-fat-remove me-1"></i> Cancel</a>' : '';
+$cancelLink = $isEditing ? '<a href="appointments.php" class="btn btn-outline-secondary btn-sm mb-0" title="Cancel editing">Cancel</a>' : '';
 
 $html = <<<'HTML'
 <!DOCTYPE html>
